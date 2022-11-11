@@ -1,5 +1,7 @@
 'use strict'
 
+const { size } = require("@11ty/eleventy/src/TemplateCache");
+
 /*
 Definir las funciones recursivas nFactorial y nFibonacci.
 
@@ -18,9 +20,10 @@ function nFactorial(n) {
   if (n === 0) {
      return 1;
    } else {
-   return n * factorial(n-1);
+   return n * nFactorial(n-1);
   }
 }
+console.log(nFactorial(1));
 
 function nFibonacci(n) {
   if (n < 2){
@@ -28,9 +31,9 @@ function nFibonacci(n) {
   }else{
     return nFibonacci(n -1) + nFibonacci(n - 2);
   }
-
+  
 }
-
+console.log(nFibonacci(9));
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
   - enqueue: agrega un valor respetando el orden.
@@ -41,9 +44,38 @@ Pueden utilizar class o función constructora.
 */
 
 function Queue() {
+ this.queue = [];
+
+
+//   enqueue(){
+//   this.queue.push();
+//   return this.queue
+// }
+
+//   dequeue(){
+//   return this.queue;
+// }
+
+// size(){
+//   return this.queue.length;
+// }
+
+Queue.prototype.enqueue = function (arg){
+  this.queue.push(arg);
+};
+
+Queue.prototype.dequeue = function(){
+  return this.queue.shift();
+};
+
+Queue.prototype.size =function(){
+  return this.queue.length;
+};
 
 }
 
+var miQueue = new Queue
+console.log(miQueue.enqueue());
 // No modifiquen nada debajo de esta linea
 // --------------------------------
 
